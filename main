@@ -1,7 +1,8 @@
 function verificarVencimentos() { 
   var dataAtual = new Date(); 
    dataAtual.setHours(0,0,0,0);
-  var hora = dataAtual.getHours(); 
+  var horaAtual = new Date();
+  var hora = horaAtual.getHours(); 
 
   // Condição: Se for dia de semana (1 a 5) E a hora estiver entre 7h e 24h 
   if ((hora >= 7 && hora <=8) || (hora >= 13 && hora <= 14) || (hora >= 15 && hora <= 16 )) { 
