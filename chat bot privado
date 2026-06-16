@@ -1,0 +1,18 @@
+function avisoMensal() { 
+
+  // Lista com as URLs dos webhooks de cada espaço individual
+  var webhooks = [
+    "https://chat.googleapis.com/v1/spaces/1lM0ByAAAAE/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=-kLXFZ_S4SG3EJrpLIMVwQt1_w8RFgVbS5KC0d7J0mE",
+    "https://chat.googleapis.com/v1/spaces/AAQAo4W_HYs/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=5IIKJ07MCM0QtTPMQH8-olsrLBx2FfQHxJhjSeGglpU",
+    "three",
+    "four",
+    "five",
+  ];
+
+  webhooks.forEach(function(url) {
+    var payload = JSON.stringify({ "text": "Olá! Este é o seu lembrete privado mensal." });
+    var options = { "method": "post", "contentType": "application/json", "payload": payload };
+    UrlFetchApp.fetch(url, options);
+  });
+}
+
