@@ -1,14 +1,14 @@
 function avisoMensal() { 
-
+ 
   // Lista com as URLs dos webhooks de cada espaço individual
-  var webhooks = [
-     PropertiesService.getScriptProperties().getProperty('adicione o nome da propriedade'),
-  ];
+  var put = PropertiesService.getScriptProperties().getProperty('teste');
+  user = put.split(",");
 
-  webhooks.forEach(function(url) {
-    var payload = JSON.stringify({ "text": "(adicione seu texto)" });
+  for(let i=0;i<(user.length);i++) {
+    var payload = JSON.stringify({ "text": "Olá! favor atualizar os indicadores na pasta "+user[i] });
+    i++;
     var options = { "method": "post", "contentType": "application/json", "payload": payload };
-    UrlFetchApp.fetch(url, options);
-  });
+    UrlFetchApp.fetch(user[i], options);
+  };
+  
 }
-
