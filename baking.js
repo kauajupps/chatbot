@@ -17,7 +17,7 @@ function verificarVencimentos() {
       return; 
     } 
 // Armazena essa aba na variável "folha"
-    var folha = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Baking");; // ALTERAÇÃO - coloquei para que obtenha os dados se baseando na aba com o nome "Baking" não a aba aberta por ultimo
+    var folha = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Baking"); // ALTERAÇÃO - coloquei para que obtenha os dados se baseando na aba com o nome "Baking" não a aba aberta por ultimo
 // obtem qual a ultima linha preenchida
     var ultimaLinha = folha.getLastRow(); 
 // se a planilha tiver menos que 2 linhas preenchidas ou seja tem apenas o cabeçalho, printa e termina a execução
