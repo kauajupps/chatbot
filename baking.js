@@ -7,8 +7,8 @@ function verificarVencimentos() {
   var horaAtual = new Date();
 // retona a hora de "horaAtual" para hora em numeral
   var hora = horaAtual.getHours(); 
-// Condição: Se for um dos intevalos - 7a8 ou 13a14 ou 15a16, executa
-  if ((hora >= 7 && hora <=8) || (hora >= 13 && hora <= 14) || (hora >= 15 && hora <= 16 )) { 
+// Condição: Se for uma de essas horas ".getHours() retorna apenas as horas" - 7 ou 13 ou 15, executa
+  if (hora == 7 || hora == 13 || hora == 15) { 
 // procura e copia o valor que esta na propriedade de script de "webhook" e carrega para "urlWebhook" 
     var urlWebhook = PropertiesService.getScriptProperties().getProperty('webhook'); 
 // verifica se há algo em urlwebhook se não executa, enviando uma emnsagem de erro e encerra
