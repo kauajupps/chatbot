@@ -99,7 +99,8 @@ function verificarVencimentos() {
       var options = { 
         "method": "post", 
         "contentType": "application/json", 
-        "payload": JSON.stringify({ "text": corpoMensagem }) 
+        "payload": JSON.stringify({ "text": corpoMensagem }),
+        "muteHttpExceptions": true
       }; 
 // envia por webhook para o chat google, usando o link "urlWebhook", e a configuraçao do objeto "options"
       UrlFetchApp.fetch(urlWebhook, options); 
