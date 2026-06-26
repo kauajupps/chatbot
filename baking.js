@@ -26,7 +26,7 @@ function verificarVencimentos() {
       return; 
     }
 // lê a tabela inteira, guarda e informações na variável "dados" como uma matriz 
-    var dados = folha.getRange(2, 1, ultimaLinha - 1, 12).getValues(); 
+    var dados = folha.getRange(2, 1, ultimaLinha - 1, 13).getValues(); 
 // cria uma variavel qual vai guardar os itensa serem retirados
     var listaItens = []; 
 // Larguras mínimas das colunas para alinhar o cabeçalho inicial
@@ -45,24 +45,33 @@ function verificarVencimentos() {
 // garante que a data seja uma data valida, depois compara as data de saida e a data atual.
 //as duas quais estao com as horas setasdas para 0 comparando apenas o dia
       if (!isNaN(dataSaida.getTime()) && dataSaida.getTime() === dataAtual.getTime()) { 
+
+        if (dados[i][12] === true) continue; 
+				
         var ipn = dados[i][1] ? String(dados[i][1]).trim() : "N/A";     // Coluna B
         var id = dados[i][2] ? String(dados[i][2]).trim() : "N/A";      // Coluna C
         var posicao = dados[i][4] ? String(dados[i][4]).trim() : "N/A"; // Coluna E
         var tipo = dados[i][5] ? String(dados[i][5]).trim() : "N/A";    // Coluna F
+				
         var data = Utilities.formatDate(dataSaidaChat, Session.getScriptTimeZone(), "dd/MM/yyyy");
         var hora = Utilities.formatDate(dataSaidaChat, Session.getScriptTimeZone(), "HH:mm");
+				
         // Atualiza as larguras máximas dinamicamente
         if (tipo.length > maxTipo) maxTipo = tipo.length;
         if (ipn.length > maxIpn) maxIpn = ipn.length;
         if (id.length > maxId) maxId = id.length;
         if (posicao.length > maxPos) maxPos = posicao.length;
-        if (posicao.length > maxData) maxData = data.length;
-        if (posicao.length > maxhora) maxhora = hora.length;
+        if (data.length > maxData) maxData = data.length;
+        if (hora.length > maxhora) maxhora = hora.length;
+        
 //cria um objeto organizado com os dados extraiu da linha atual e o guarda dentro de "listaItens"
+        
         listaItens.push({ tipo: tipo, ipn: ipn, id: id, pos: posicao, data: data, hora: hora });
       } 
     } 
+    
     // 2º Passo: Montar a tabela alinhada se houver itens vencidos
+    
     if (listaItens.length > 0) {    
       // Função interna para preencher espaços em branco e alinhar as colunas
       var pad = function(txt, maxLen) {
